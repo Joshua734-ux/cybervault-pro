@@ -1,0 +1,19 @@
+# Database (Do NOT upload your earnings history)
+*.db
+*.sqlite3
+
+# Python internals (Clutter)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment/Secrets
+.env
+.venv
+env/
+venv/
+ENV/
+
+# System files
+.DS_Store
+Thumbs.db
