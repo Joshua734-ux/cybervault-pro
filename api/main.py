@@ -62,3 +62,25 @@ def get_all_vaults(access_key: str):
         ],
         "total_revenue_potential": "UGX 170,000"
     }
+import os
+from supabase import create_client, Client
+
+# These will be your secret "keys" from Supabase
+URL: str = "your_supabase_url"
+KEY: str = "your_supabase_anon_key"
+supabase: Client = create_client(URL, KEY)
+
+@app.post("/vault/register")
+def register_owner(phone: str, password: str):
+    # This saves the owner's phone and password forever
+    data = supabase.table("owners").insert({"phone": phone, "password": password}).execute()
+    return {"status": "Owner Account Created"}
+
+@app.get("/kernel/all-data")
+def get_all_vaults(access_key: str):
+    if access_key != "MAXWELL_2026_PRO":
+        raise HTTPException(status_code=403, detail="Forbidden")
+    
+    # This pulls every single file and price from the database
+    response = supabase.table("vault_files").select("*").execute()
+    return {"admin": "Maxwell", "inventory": response.data}
