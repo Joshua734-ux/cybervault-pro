@@ -67,7 +67,7 @@ from supabase import create_client, Client
 
 # These will be your secret "keys" from Supabase
 URL: str = "your_supabase_url"
-KEY: str = "your_supabase_anon_key"
+KEY: str = "sb_publishable_KTKhi1hZ5-tZ2P3XBVX9Pg_PQWaZ-fI"
 supabase: Client = create_client(URL, KEY)
 
 @app.post("/vault/register")
